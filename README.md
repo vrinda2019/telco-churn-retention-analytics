@@ -1,103 +1,206 @@
-# Telco Churn Retention Analytics
+# MegaTelCo Churn Retention Analytics
 
-## Predicting Customer Churn and Designing Data-Driven Retention Strategies
+## Predicting Customer Churn and Optimizing Retention Strategy
 
-An end-to-end machine learning and analytics project focused on predicting customer churn in the telecommunications industry and identifying actionable customer retention strategies using interpretable machine learning.
+An end-to-end machine learning and business analytics project focused on predicting customer churn and optimizing customer retention decisions for a telecommunications company.
 
----
-
-## Project Overview
-
-Customer churn is one of the most critical business challenges for subscription-based companies. Acquiring new customers is often significantly more expensive than retaining existing ones.
-
-This project aims to:
-
-- Predict which customers are likely to churn
-- Understand the behavioral and financial drivers of churn
-- Identify high-risk customer segments
-- Provide interpretable business insights
-- Recommend retention strategies based on data
-
-Rather than treating churn prediction as only a machine learning problem, this project approaches it as a business decision-making problem.
+This project is based on the MegaTelCo churn use case from *Data Science for Business* and frames churn prediction as a business decision problem rather than only a machine learning task.
 
 ---
 
-## Business Problem
+# Business Context
 
-Telecommunication companies face significant revenue loss due to customer churn.
+MegaTelCo, a large telecommunications provider, is experiencing substantial customer churn in its wireless business.
 
-The key business questions addressed are:
+Approximately **20% of customers leave when their contracts expire**, creating significant revenue loss and making customer acquisition increasingly difficult.
 
-1. Which customers are most likely to churn?
-2. What factors contribute to churn?
-3. Can churn risk be predicted early?
-4. Which customer groups require targeted retention strategies?
-5. How can analytics support business intervention decisions?
+To address this challenge, MegaTelCo's marketing team designed a **special retention offer** involving discounts and customer incentives.
+
+However:
+
+- The offer costs **$200 per customer**
+- Budget constraints allow the company to target **only 25% of expiring customers**
+
+Because the offer is expensive, sending it to everyone is financially impractical.
+
+The company therefore faces a critical decision:
+
+> Which customers should receive the retention offer in order to maximize retention and business value?
+
+This project addresses that decision using predictive analytics and machine learning.
 
 ---
 
-## Dataset
+# Stakeholder Scenario
 
-### IBM Telco Customer Churn Dataset
+Nadia, a newly hired Data Science Product Manager at MegaTelCo, leads the churn reduction initiative.
 
-The dataset contains customer-level information for a telecom provider.
+The data science team's responsibility is to:
 
-Features include:
+- Understand churn behavior
+- Build predictive churn models
+- Identify high-risk customers
+- Recommend which customers should receive retention offers
 
-### Customer Information
+The final objective is not simply prediction, but **actionable targeting decisions**.
 
-- Gender
-- Senior citizen status
-- Partner
-- Dependents
+---
 
-### Subscription Services
+# Business Goal
 
-- Phone service
-- Multiple lines
-- Internet service
-- Online security
-- Online backup
-- Device protection
-- Tech support
-- Streaming TV
-- Streaming movies
+The business objective is to:
 
-### Account Information
+> Reduce customer churn while maximizing the return on retention spending.
 
-- Tenure
-- Contract type
-- Paperless billing
-- Payment method
-- Monthly charges
-- Total charges
+Because the retention offer is expensive and limited to 25% of customers, the company must allocate resources strategically.
 
-### Target Variable
+The project therefore focuses on:
+
+- Increasing customer retention
+- Reducing unnecessary offer spending
+- Improving marketing efficiency
+- Supporting data-driven decision making
+
+---
+
+# Data Science Problem
+
+This is a **supervised binary classification problem**.
+
+The predictive task is:
+
+> Predict whether a customer will churn shortly after contract expiration.
+
+Target variable:
 
 - **Churn**
     - Yes
     - No
 
+Predicted churn probabilities will then be used to prioritize customers for retention campaigns.
+
 ---
 
-## Project Goals
+# Dataset
+
+The project uses historical customer contract and subscription information.
+
+## Customer Features
+
+### Demographics
+
+- Gender
+- SeniorCitizen
+- Partner
+- Dependents
+
+### Customer Relationship
+
+- Tenure
+
+### Phone Services
+
+- PhoneService
+- MultipleLines
+
+### Internet and Value-Added Services
+
+- InternetService
+- OnlineSecurity
+- OnlineBackup
+- DeviceProtection
+- TechSupport
+- StreamingTV
+- StreamingMovies
+
+### Billing and Contract Information
+
+- Contract
+- PaperlessBilling
+- PaymentMethod
+- MonthlyCharges
+
+### Target Variable
+
+- Churn
+
+---
+
+# Key Business Questions
+
+This project investigates several business and analytical questions.
+
+## Churn Understanding
+
+- Why are customers leaving?
+- Which customer profiles are associated with churn?
+- Are there early warning signals?
+
+## Marketing Strategy
+
+- Who should receive retention offers?
+- Can we maximize retention while minimizing marketing cost?
+- How should customers be prioritized?
+
+## Decision Optimization
+
+- Is predicting churn alone sufficient?
+- How can prediction support operational action?
+
+---
+
+# Questions for Stakeholders
+
+A successful churn project requires stakeholder clarification.
+
+Questions for Nadia and the marketing team include:
+
+### Retention Offer Questions
+
+- Is the retention offer truly guaranteed to work?
+- Does offer effectiveness vary by customer segment?
+- Are customers eligible for multiple campaigns?
+
+### Financial Questions
+
+- What is customer lifetime value?
+- What is the average revenue loss from churn?
+- Is $200 the total cost or incremental cost?
+
+### Operational Questions
+
+- How frequently are targeting decisions made?
+- Are there campaign execution constraints?
+- What customer experience risks exist?
+
+These questions shape model design and evaluation.
+
+---
+
+# Project Goals
+
+The project aims to:
+
+1. Predict churn probability
+2. Identify churn drivers
+3. Segment customer populations
+4. Optimize retention targeting
+5. Support business action
 
 This project combines:
 
-- Predictive analytics
-- Machine learning
-- Customer segmentation
+- Machine Learning
+- Predictive Analytics
 - Explainable AI
-- Business intelligence
-
-The objective is not only to build accurate models but also to generate actionable insights.
+- Customer Intelligence
+- Decision Science
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```text
-telco-churn-retention-analytics/
+megaTelco-churn-analytics/
 │
 ├── data/
 │   ├── raw/
@@ -108,58 +211,48 @@ telco-churn-retention-analytics/
 │   ├── 02_feature_engineering.ipynb
 │   ├── 03_modeling.ipynb
 │   ├── 04_explainability.ipynb
-│   └── 05_business_recommendations.ipynb
+│   ├── 05_targeting_strategy.ipynb
+│   └── 06_business_recommendations.ipynb
 │
 ├── src/
-│   ├── preprocessing.py
-│   ├── features.py
-│   ├── train.py
-│   └── evaluate.py
-│
 ├── dashboard/
-│
 ├── models/
-│
 ├── reports/
-│
 ├── requirements.txt
-├── README.md
-└── .gitignore
+└── README.md
 ```
 
 ---
 
-## Project Workflow
+# Project Workflow
 
-The project follows an end-to-end data science pipeline.
+The project follows an end-to-end data science lifecycle.
 
-### 1. Exploratory Data Analysis (EDA)
+## 1 Exploratory Data Analysis
 
-Objectives:
+Goals:
 
-- Understand customer behavior
-- Analyze churn distribution
-- Detect trends and patterns
-- Identify missing values and anomalies
+- Understand churn patterns
+- Analyze customer behavior
+- Detect anomalies
+- Identify important variables
 
 Planned analyses:
 
 - Churn distribution
-- Contract type vs churn
+- Contract vs churn
 - Tenure vs churn
 - Monthly charges vs churn
+- Payment method effects
 - Service adoption patterns
-- Correlation analysis
 
 ---
 
-### 2. Feature Engineering
+## 2 Feature Engineering
 
-Additional features may include:
+Potential engineered features:
 
-### Tenure Groups
-
-Customer lifecycle buckets:
+### Tenure Buckets
 
 - 0–12 months
 - 12–24 months
@@ -168,15 +261,13 @@ Customer lifecycle buckets:
 
 ### Service Usage Features
 
-Examples:
-
 - Number of subscribed services
-- Internet dependency indicators
-- Premium service indicators
+- Premium feature usage
+- Internet dependency
 
 ### Risk Indicators
 
-Potential churn-related signals:
+Potential churn signals:
 
 - Month-to-month contracts
 - Electronic check payments
@@ -185,25 +276,23 @@ Potential churn-related signals:
 
 ---
 
-### 3. Predictive Modeling
+# Predictive Modeling
 
 Multiple machine learning models will be evaluated.
 
-Planned models:
-
 | Model | Purpose |
 |---|---|
-| Logistic Regression | Interpretable baseline |
+| Logistic Regression | Baseline and interpretability |
 | Random Forest | Nonlinear relationships |
-| XGBoost | High-performance tabular modeling |
+| XGBoost | High-performance prediction |
 
 ---
 
-## Evaluation Metrics
+# Evaluation Metrics
 
-Because churn prediction is often an imbalanced classification problem, evaluation extends beyond accuracy.
+Churn prediction is typically imbalanced.
 
-Metrics:
+Evaluation includes:
 
 - Accuracy
 - Precision
@@ -211,225 +300,188 @@ Metrics:
 - F1 Score
 - ROC-AUC
 
-Special focus:
+Priority metrics:
 
 - Recall
 - ROC-AUC
 
-These metrics better capture the business cost of missing churn-prone customers.
+Missing likely churners carries substantial business cost.
 
 ---
 
-## Explainable AI (XAI)
+# Explainable AI
 
-Model interpretability is critical for business adoption.
+Prediction alone is insufficient.
+
+Business teams need to understand:
+
+> Why is this customer predicted to churn?
 
 This project incorporates:
 
-### SHAP (SHapley Additive Explanations)
+## SHAP
 
-Objectives:
+Planned outputs:
 
-- Explain individual predictions
-- Identify global feature importance
-- Understand churn drivers
+- Global feature importance
+- Individual prediction explanations
+- Churn driver analysis
 
-Planned visualizations:
+Expected insights:
 
-- SHAP summary plots
-- Feature importance rankings
-- Local prediction explanations
-
-This enables decision-makers to understand *why* customers are predicted to churn.
-
----
-
-## Customer Segmentation
-
-Beyond prediction, this project explores customer segmentation.
-
-Potential clustering techniques:
-
-- K-Means clustering
-
-Possible customer segments:
-
-- Loyal customers
-- High-value subscribers
-- Price-sensitive users
-- High-risk churn customers
-
-Segmentation helps design targeted retention campaigns.
+- Contract type impact
+- Pricing sensitivity
+- Service usage behavior
+- Customer tenure effects
 
 ---
 
-## Business Recommendations
+# Retention Offer Optimization
 
-The final stage focuses on business impact.
+Prediction is only part of the problem.
 
-Potential outputs:
+The marketing budget allows offers for only:
 
-| Customer Segment | Churn Risk | Recommended Action |
-|---|---|---|
-| New Customers | High | Onboarding support |
-| High-Value Customers | Medium | Loyalty rewards |
-| Contract-Free Customers | High | Contract incentives |
+> 25% of expiring customers
 
-The goal is to bridge machine learning outputs with operational decisions.
+The targeting strategy therefore becomes:
 
----
+1. Predict churn probability
+2. Rank customers by risk
+3. Select top-risk customers
+4. Estimate campaign impact
 
-## Interactive Dashboard
+Decision rule:
 
-Planned deployment:
+> Offer retention incentives to customers with highest predicted churn probability subject to budget constraints.
 
-### Streamlit Dashboard
-
-Features:
-
-- Customer input form
-- Real-time churn prediction
-- Churn probability score
-- Explainability insights
-- Business recommendations
-
-This transforms the project from analysis into a usable application.
+This converts churn prediction into a **resource allocation problem**.
 
 ---
 
-## Technologies Used
+# Expected Deliverables
 
-### Programming
+The data science team will produce:
+
+## Technical Outputs
+
+- Cleaned dataset
+- Predictive models
+- Evaluation results
+- Explainability analysis
+
+## Business Outputs
+
+- Ranked customer targeting list
+- Retention strategy recommendations
+- Marketing decision support dashboard
+
+These outputs support operational marketing action.
+
+---
+
+# Success Criteria
+
+Success will be evaluated using both technical and business metrics.
+
+## Model Success
+
+- High recall
+- Strong ROC-AUC
+- Stable predictions
+
+## Business Success
+
+- Reduced churn
+- Improved retention rate
+- Efficient marketing spend
+- Positive retention ROI
+
+The true measure of success is:
+
+> Lower churn achieved through better targeting decisions.
+
+---
+
+# Planned Dashboard
+
+A Streamlit dashboard will enable:
+
+- Customer-level prediction
+- Churn probability display
+- SHAP explanations
+- Retention recommendations
+- Targeting simulation
+
+This transforms the project into an interactive business tool.
+
+---
+
+# Technologies
+
+## Programming
 
 - Python
 
-### Data Analysis
+## Data Analysis
 
 - Pandas
 - NumPy
 
-### Visualization
+## Visualization
 
 - Matplotlib
 - Seaborn
 
-### Machine Learning
+## Machine Learning
 
 - Scikit-learn
 - XGBoost
 
-### Explainability
+## Explainability
 
 - SHAP
 
-### Deployment
+## Deployment
 
 - Streamlit
 
-### Version Control
+## Version Control
 
 - Git
 - GitHub
 
 ---
 
-## Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/telco-churn-retention-analytics.git
-```
-
-Move into project folder:
-
-```bash
-cd telco-churn-retention-analytics
-```
-
-Create virtual environment:
-
-### Mac/Linux
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### Windows
-
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Running the Project
-
-Launch Jupyter:
-
-```bash
-jupyter notebook
-```
-
-Run notebooks in sequence:
-
-1. EDA
-2. Feature Engineering
-3. Modeling
-4. Explainability
-5. Business Insights
-
----
-
-## Future Improvements
+# Future Improvements
 
 Potential extensions:
 
-- A/B testing for retention campaigns
-- Retention intervention simulation
-- Model monitoring pipeline
-- Cloud deployment
-- MLOps integration
-- Advanced uplift modeling
+- Retention uplift modeling
+- Customer lifetime value integration
+- Campaign ROI simulation
+- A/B testing framework
+- MLOps deployment
 
 ---
 
-## Expected Outcomes
-
-This project aims to demonstrate:
-
-- End-to-end machine learning workflow
-- Applied business analytics
-- Explainable AI
-- Customer intelligence
-- Product and retention analytics
-
----
-
-## Author
+# Author
 
 **Vrinda Tibrewal**
 
-MS Data Science — New York University
+MS in Data Science  
+New York University
 
-Interested in:
+Interests:
 
-- Data Science
 - Machine Learning
 - NLP
 - Product Analytics
-- AI-driven decision systems
+- Decision Intelligence
+- AI for Business
 
 ---
 
-## License
+# License
 
 MIT License
